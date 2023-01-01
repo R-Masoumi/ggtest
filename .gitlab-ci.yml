@@ -1,0 +1,54 @@
+---
+stages:
+  - build
+  - test
+
+default:
+  before_script: 
+    - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    - export PATH=$JAVA_HOME/bin:$PATH
+
+### FEATURE, RELEASE, HOTFIX
+
+build:
+  stage: build
+  script:
+    - ./gradlew testAndAssemble
+  artifacts:
+    paths:
+      - app/build/outputs/
+  only:
+    - /^feature.*$/
+    - /^release.*$/
+    - /^hotfix.*$/
+
+unitTests:
+  stage: test
+  script:
+    - ./gradlew test
+  dependencies: []
+  only:
+    - /^feature.*$/
+    - /^release.*$/
+    - /^hotfix.*$/
+
+### DEVELOP, MASTER
+build_dev:
+  stage: build
+  script:
+    - ./gradlew testAndAssemble
+  artifacts:
+    paths:
+      - app/build/outputs/
+  only:
+    - develop
+    - master
+
+unitTests_dev:
+  stage: test
+  script:
+    - ./gradlew test
+  dependencies: []
+  only:
+    - develop
+    - master
