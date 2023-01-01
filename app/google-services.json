@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16183178209",
+    "project_id": "geosample-624f2",
+    "storage_bucket": "geosample-624f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16183178209:android:4ef7fe8f0d19b1715718a0",
+        "android_client_info": {
+          "package_name": "com.temp.ggtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16183178209-5o8aksk87hib0g4s9k55o4ejn9chb32f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5Nt3mmny3TqHCr24dz5VgrjCG7HkVVRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16183178209-5o8aksk87hib0g4s9k55o4ejn9chb32f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

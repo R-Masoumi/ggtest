@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ggtest</string>
+    <string name="info_no_hit_found">Could not find any hits</string>
+    <string name="desc_img_hit">Image of hit</string>
+    <string name="desc_img_refresh">Refresh List</string>
+    <string name="desc_img_back">Back</string>
+    <string name="desc_img_home">Home</string>
+    <string name="lbl_hit_list">List of Hits</string>
+    <string name="lbl_id">ID</string>
+    <string name="lbl_title">Title</string>
+    <string name="lbl_type">Type</string>
+    <string name="lbl_dateCreated">Date Created</string>
+    <string name="lbl_dateModified">Date Modified</string>
+    <string name="lbl_author_id">Author ID</string>
+    <string name="lbl_author_name">Author Name</string>
+    <string name="mis_no_title">Title not found</string>
+    <string name="err_not_found">Hit not found</string>
+
+    <string name="title_Home">Home</string>
+    <string name="title_Hit">Hit</string>
+</resources>

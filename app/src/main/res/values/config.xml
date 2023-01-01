@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="SERVER_URL" >https://api.geogebra.org/v1.0/</string>
+</resources>
