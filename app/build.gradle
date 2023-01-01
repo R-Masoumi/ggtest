@@ -70,6 +70,8 @@ task testAndAssemble {
     dependsOn 'test'
     dependsOn 'assembleDebug'
     dependsOn 'assembleRelease'
+    dependsOn 'bundleDebug'
+    dependsOn 'bundleRelease'
 }
 
 dependencies {
