@@ -46,8 +46,5 @@ class FakeSourceModule{
     @Provides
     @Singleton
     @Named("Url")
-    fun provideUrl(mockServer : MockWebServer): HttpUrl = runBlocking{
-        val url = async(Dispatchers.IO){ mockServer.url("/")}
-        url.await()
-    }
+    fun provideUrl(mockServer : MockWebServer): HttpUrl = mockServer.url("/")
 }

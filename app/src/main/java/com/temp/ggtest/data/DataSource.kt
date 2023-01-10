@@ -1,17 +1,15 @@
 package com.temp.ggtest.data
 
-import android.content.Context
-import com.squareup.moshi.Moshi
 import com.temp.ggtest.data.model.Hit
-import com.temp.ggtest.data.model.Hits
-import dagger.hilt.android.qualifiers.ApplicationContext
 import com.temp.ggtest.data.net.Api
 import com.temp.ggtest.data.net.Api.Companion.apiCall
 import com.temp.ggtest.data.persist.HitDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 import javax.inject.Singleton
 
