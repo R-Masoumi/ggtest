@@ -57,3 +57,11 @@ sealed class Navigation(val route: String, @StringRes val title : Int) {
             })
     }
 }
+
+class Navigator{
+    var controller : NavController? = null
+    private set
+    fun initialize(navController: NavController){
+        this.controller = navController
+    }
+}

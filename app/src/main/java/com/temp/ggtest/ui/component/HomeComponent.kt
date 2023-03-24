@@ -47,10 +47,10 @@ import java.time.LocalDateTime
  */
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-fun HomeComponent(navController: NavHostController) {
+fun HomeComponent() {
     val viewModel: HomeViewModel = hiltViewModel()
     val callResult = viewModel.hitList.collectAsStateWithLifecycle(CallResult.idle())
-    HomePage(navController, callResult) {
+    HomePage(viewModel::navigate ,callResult) {
         viewModel.refresh()
     }
 }
@@ -62,7 +62,7 @@ fun HomeComponent(navController: NavHostController) {
  * @param refresh handle to call data refresh
  */
 @Composable
-private fun HomePage(navController: NavHostController, callResult: State<CallResult<List<Hit>>>, refresh: () -> Unit) {
+private fun HomePage(navigate : (String) -> Unit, callResult: State<CallResult<List<Hit>>>, refresh: () -> Unit) {
     Column {
         Spacer(modifier = Modifier.height(5.dp))
         DrawableWrapper(drawableEnd = {
@@ -83,7 +83,7 @@ private fun HomePage(navController: NavHostController, callResult: State<CallRes
                             modifier = Modifier.fillMaxWidth()
                         )
                     } else {
-                        HitList(list = list, navController)
+                        HitList(list = list, navigate)
                     }
                 }
                 CallResult.Status.LOADING, CallResult.Status.IDLE -> {
@@ -107,13 +107,13 @@ private fun HomePage(navController: NavHostController, callResult: State<CallRes
  * @param navController navigation controller to enable forward navigation
  */
 @Composable
-private fun HitList(list: List<Hit>, navController: NavHostController) {
+private fun HitList(list: List<Hit>, navigate : (String) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxWidth()
     ) {
         items(list) { hit ->
-            HitItem(hit, navController)
+            HitItem(hit, navigate)
         }
     }
 }
@@ -125,9 +125,9 @@ private fun HitList(list: List<Hit>, navController: NavHostController) {
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun HitItem(hit: Hit, navController: NavHostController) {
+private fun HitItem(hit: Hit, navigate : (String) -> Unit) {
     Card(
-        onClick = { navController.navigateToHit(hit.id) },
+        onClick = { navigate(hit.id) },
         modifier = Modifier.padding(5.dp)
     ) {
         Column {
@@ -222,7 +222,7 @@ private fun PagePreview() {
     val list = produceState(initialValue = CallResult.success(listOf(hit, hit, hit))) {
         value = CallResult.success(listOf(hit))
     }
-    HomePage(rememberNavController(), list) {}
+    HomePage({}, list) {}
 }
 
 /**

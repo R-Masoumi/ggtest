@@ -26,17 +26,20 @@ import com.temp.ggtest.ui.component.HitComponent
 import com.temp.ggtest.ui.component.HomeComponent
 import com.temp.ggtest.ui.misc.Navigation
 import com.temp.ggtest.ui.misc.Navigation.Home.navigateToHome
+import com.temp.ggtest.ui.misc.Navigator
 import com.temp.ggtest.ui.misc.iconId
 import com.temp.ggtest.ui.theme.GgtestTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
+import javax.inject.Inject
 
 /**
  * MainActivity
  */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject lateinit var navigator : Navigator
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -44,6 +47,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                     val navController = rememberNavController()
+                    navigator.initialize( navController)
                     Column(
                         modifier = Modifier.fillMaxSize()
                     ) {
@@ -100,13 +104,13 @@ fun AppBar(navController: NavHostController) {
 fun MainScreen(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Navigation.Home.route,
+        startDestination = Navigation.Home.route
     ) {
         composable(Navigation.Home.route, Navigation.Home.getNavArguments()) {
-            HomeComponent(navController = navController)
+            HomeComponent()
         }
         composable(Navigation.Hit.route, Navigation.Hit.getNavArguments()) {
-            HitComponent(navController = navController)
+            HitComponent()
         }
     }
 }

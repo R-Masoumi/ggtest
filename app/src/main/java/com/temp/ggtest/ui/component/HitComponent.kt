@@ -45,7 +45,7 @@ import java.time.LocalDateTime
  */
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-fun HitComponent(navController: NavHostController) {
+fun HitComponent() {
     val viewModel: HitViewModel = hiltViewModel()
     val callResult = viewModel.hit.collectAsStateWithLifecycle(initialValue = CallResult.idle())
     HitPage(callResult) {

@@ -3,6 +3,7 @@ package com.temp.ggtest.di
 import android.content.Context
 import coil.ImageLoader
 import coil.memory.MemoryCache
+import com.temp.ggtest.ui.misc.Navigator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +23,8 @@ class CoreModule {
         .memoryCache { MemoryCache.Builder(context).maxSizePercent(0.25).build() }
         .crossfade(true)
         .build()
+
+    @Provides
+    @Singleton
+    fun provideNavController() = Navigator()
 }
